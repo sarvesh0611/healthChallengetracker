@@ -1,13 +1,12 @@
-Health Challenge Tracker🤸‍♂️
+Health Challenge Tracker
 
-Health Challenge Tracker is a web application for tracking and exploring workout activities. Users can add, filter, and view detailed workout progress.
+Health Challenge Tracker is a web application for tracking the progress of workout activities. In this application users can add, filter, and view detailed workout progress.
 
 ## Features
 
 - **Add Workout:** Add workout details including name, duration, and type.
 - **Filter Workouts:** Search workouts by name or filter by type.
 - **View Progress:** See detailed workout progress for each user.
-- **Pagination:** Navigate through users with pagination.
 
 ## Usage
 
@@ -26,16 +25,8 @@ Health Challenge Tracker is a web application for tracking and exploring workout
 ### Viewing User Progress 📈
 
 1. On the "Explore" page, click a user's name.
-2. View detailed workout progress for the selected user.
+2. You can view detailed workout progress for the selected user.
 
-HOME PAGE
-![image](https://github.com/user-attachments/assets/2547f6b8-d85a-46bb-9919-a6f95ca767b2)
-
-EXPLORE PAGE
-![image](https://github.com/user-attachments/assets/e8bc7ebe-64f9-4957-9a9a-20768dc05b59)
-
-ADD WORKOUT
-![image](https://github.com/user-attachments/assets/9a3eba01-f334-43f5-a3eb-55caad2a0c8c)
 
 
 
@@ -46,7 +37,7 @@ ADD WORKOUT
 
    ```bash
    git clone https://github.com/sarvesh0611/healthChallengetracker
-   cd Health-Challenge-Tracker
+   cd Health_Challenge_Tracker
    ```
 
 2. Install dependencies
@@ -59,6 +50,8 @@ ADD WORKOUT
 
 ```bash
    npm start
+   ng build
+   ng serve
 ```
 
 4. You can access the project at http://localhost:4200
