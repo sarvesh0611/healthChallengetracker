@@ -20,34 +20,34 @@
         </select>
     </form>
 
-    @if(filteredUserData()?.length === 0) {
-    <p class="mt-6 text-xl text-center">No workouts found</p>
-    } @else {
-    <p class="mt-6 text-xl text-center">Workouts found: {{ filteredUserData()?.length }}</p>
+    <div *ngIf="filteredUserData().length === 0; else workoutsFound">
+        <p class="mt-6 text-xl text-center">No workouts found</p>
+    </div>
 
-    <table class="mt-6 w-full bg-slate-200 border border-black">
+    <ng-template #workoutsFound>
+        <p class="mt-6 text-xl text-center">Workouts found: {{ filteredUserData().length }}</p>
 
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Workouts</th>
-                <th>Number of Workouts</th>
-                <th>Total Workout Minutes</th>
-            </tr>
-        </thead>
-
-        @for (user of paginatedData; track $index) {
-        <!-- list the workouts -->
-        <tr class="border border-gray-800 p-3">
-            <a routerLink="/{{user.name}}" class="p-3 text-center flex items-center justify-center underline">{{
-                user.name }}</a>
-            <td class="p-3 text-center">{{ getWorkoutTypes(user.workouts) }}</td>
-            <td class="p-3 text-center">{{ user.workouts.length }}</td>
-            <td class="p-3 text-center">{{ getTotalMinutes(user.workouts) }}</td>
-        </tr>
-        }
-    </table>
-    }
+        <table class="mt-6 w-full bg-slate-200 border border-black">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Workouts</th>
+                    <th>Number of Workouts</th>
+                    <th>Total Workout Minutes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of paginatedData; trackBy: trackByIndex" class="border border-gray-800 p-3">
+                    <td class="p-3 text-center">
+                        <a routerLink="/{{user.name}}" class="underline">{{ user.name }}</a>
+                    </td>
+                    <td class="p-3 text-center">{{ getWorkoutTypes(user.workouts) }}</td>
+                    <td class="p-3 text-center">{{ user.workouts.length }}</td>
+                    <td class="p-3 text-center">{{ getTotalMinutes(user.workouts) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
 
     <!-- pagination -->
 
@@ -56,8 +56,7 @@
             [disabled]="currentPage === 1">Previous</button>
         <button class="p-2 border border-black hover:bg-black transition-all hover:text-white" (click)="nextPage()"
             [disabled]="currentPage === totalPages">Next</button>
-
-            <p>Results per page: </p>
+        <p>Results per page: </p>
         <select name="noOfPages" id="noOfPages" (change)="changeItemsPerPage($event)">
             <option value="2">2</option>
             <option value="5">5</option>
